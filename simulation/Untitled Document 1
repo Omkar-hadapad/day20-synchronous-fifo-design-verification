@@ -1,0 +1,416 @@
+ncsim> 
+ncsim> database -open waves -into waves.shm -default
+Created default SHM database waves
+ncsim> probe -create -shm day20_tb.A day20_tb.B day20_tb.Cin day20_tb.and_y day2\
+0_tb.clk day20_tb.count day20_tb.fa_carry day20_tb.fa_sum day20_tb.fail_count da\
+y20_tb.fifo_rd_en day20_tb.fifo_wr_data day20_tb.fifo_wr_en day20_tb.ha_carry da\
+y20_tb.ha_sum day20_tb.i day20_tb.inc_A day20_tb.inc_Y day20_tb.mem_rd_addr day2\
+0_tb.mem_rd_data day20_tb.mem_rd_en day20_tb.mem_wr_addr day20_tb.mem_wr_data da\
+y20_tb.mem_wr_en day20_tb.nand_y day20_tb.nor_y day20_tb.not_y day20_tb.or_y day\
+20_tb.pass_count day20_tb.pointer day20_tb.pointer_enable day20_tb.r_empty day20\
+_tb.r_full day20_tb.r_rd_data day20_tb.read_do day20_tb.reset day20_tb.s_count d\
+ay20_tb.s_empty day20_tb.s_full day20_tb.s_rd_data day20_tb.s_rd_ptr day20_tb.s_\
+read_do day20_tb.s_wr_ptr day20_tb.s_write_do day20_tb.status_empty day20_tb.sta\
+tus_full day20_tb.write_do day20_tb.xor_y
+Created probe 1
+ncsim> run
+
+==============================================
+TEST 1 : BASIC GATES
+==============================================
+TIME=0 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=xx | WR_PTR=x | RD_PTR=x | COUNT= x | FULL=x | EMPTY=x
+PASS : NOT                            | Expected=1 Actual=1
+PASS : AND                            | Expected=0 Actual=0
+PASS : OR                             | Expected=0 Actual=0
+PASS : XOR                            | Expected=0 Actual=0
+PASS : NAND                           | Expected=1 Actual=1
+PASS : NOR                            | Expected=1 Actual=1
+PASS : NOT                            | Expected=1 Actual=1
+PASS : AND                            | Expected=0 Actual=0
+PASS : OR                             | Expected=1 Actual=1
+PASS : XOR                            | Expected=1 Actual=1
+PASS : NAND                           | Expected=1 Actual=1
+PASS : NOR                            | Expected=0 Actual=0
+PASS : NOT                            | Expected=0 Actual=0
+PASS : AND                            | Expected=0 Actual=0
+PASS : OR                             | Expected=1 Actual=1
+PASS : XOR                            | Expected=1 Actual=1
+PASS : NAND                           | Expected=1 Actual=1
+PASS : NOR                            | Expected=0 Actual=0
+PASS : NOT                            | Expected=0 Actual=0
+PASS : AND                            | Expected=1 Actual=1
+PASS : OR                             | Expected=1 Actual=1
+PASS : XOR                            | Expected=0 Actual=0
+PASS : NAND                           | Expected=0 Actual=0
+PASS : NOR                            | Expected=0 Actual=0
+
+==============================================
+TEST 2 : HALF ADDER
+==============================================
+PASS : HA SUM                         | Expected=0 Actual=0
+PASS : HA CARRY                       | Expected=0 Actual=0
+TIME=5000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : HA SUM                         | Expected=1 Actual=1
+PASS : HA CARRY                       | Expected=0 Actual=0
+PASS : HA SUM                         | Expected=1 Actual=1
+PASS : HA CARRY                       | Expected=0 Actual=0
+PASS : HA SUM                         | Expected=0 Actual=0
+PASS : HA CARRY                       | Expected=1 Actual=1
+
+==============================================
+TEST 3 : FULL ADDER
+==============================================
+PASS : FA SUM                         | Expected=0 Actual=0
+PASS : FA CARRY                       | Expected=0 Actual=0
+PASS : FA SUM                         | Expected=1 Actual=1
+PASS : FA CARRY                       | Expected=0 Actual=0
+TIME=10000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : FA SUM                         | Expected=1 Actual=1
+PASS : FA CARRY                       | Expected=0 Actual=0
+PASS : FA SUM                         | Expected=0 Actual=0
+PASS : FA CARRY                       | Expected=1 Actual=1
+PASS : FA SUM                         | Expected=1 Actual=1
+PASS : FA CARRY                       | Expected=0 Actual=0
+PASS : FA SUM                         | Expected=0 Actual=0
+PASS : FA CARRY                       | Expected=1 Actual=1
+PASS : FA SUM                         | Expected=0 Actual=0
+PASS : FA CARRY                       | Expected=1 Actual=1
+TIME=15000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : FA SUM                         | Expected=1 Actual=1
+PASS : FA CARRY                       | Expected=1 Actual=1
+
+==============================================
+TEST 4 : 4-BIT INCREMENTER
+==============================================
+PASS : INCREMENTER                    | Expected=01 Actual=01
+PASS : INCREMENTER                    | Expected=02 Actual=02
+PASS : INCREMENTER                    | Expected=03 Actual=03
+PASS : INCREMENTER                    | Expected=04 Actual=04
+TIME=20000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : INCREMENTER                    | Expected=05 Actual=05
+PASS : INCREMENTER                    | Expected=06 Actual=06
+PASS : INCREMENTER                    | Expected=07 Actual=07
+PASS : INCREMENTER                    | Expected=08 Actual=08
+PASS : INCREMENTER                    | Expected=09 Actual=09
+TIME=25000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : INCREMENTER                    | Expected=0a Actual=0a
+PASS : INCREMENTER                    | Expected=0b Actual=0b
+PASS : INCREMENTER                    | Expected=0c Actual=0c
+PASS : INCREMENTER                    | Expected=0d Actual=0d
+PASS : INCREMENTER                    | Expected=0e Actual=0e
+TIME=30000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : INCREMENTER                    | Expected=0f Actual=0f
+PASS : INCREMENTER                    | Expected=00 Actual=00
+
+==============================================
+TEST 5 : POINTER
+==============================================
+TIME=35000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER RESET                  | Expected=00 Actual=00
+TIME=36000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=40000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=45000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=01 Actual=01
+TIME=50000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=55000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=02 Actual=02
+TIME=60000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=65000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=03 Actual=03
+TIME=70000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=75000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=04 Actual=04
+TIME=80000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=85000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=05 Actual=05
+TIME=90000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=95000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=06 Actual=06
+TIME=100000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=105000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=07 Actual=07
+TIME=110000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=115000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : POINTER COUNT                  | Expected=00 Actual=00
+
+==============================================
+TEST 6 : 8x8 MEMORY
+==============================================
+TIME=116000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=120000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=125000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=126000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=130000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=135000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=140000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=145000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=150000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=155000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=160000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=165000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=170000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=175000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=180000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=185000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=190000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=195000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=200000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=205000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=210000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=215000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=00 Actual=00
+TIME=220000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=225000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=11 Actual=11
+TIME=230000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=235000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=22 Actual=22
+TIME=240000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=245000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=33 Actual=33
+TIME=250000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=255000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=44 Actual=44
+TIME=260000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=265000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=55 Actual=55
+TIME=270000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=275000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=66 Actual=66
+TIME=280000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=285000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MEMORY READ                    | Expected=77 Actual=77
+
+==============================================
+TEST 7 : OCCUPANCY COUNTER
+==============================================
+TIME=286000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=290000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=295000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT RESET                    | Expected=00 Actual=00
+TIME=296000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=300000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=305000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=01 Actual=01
+TIME=310000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=315000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=02 Actual=02
+TIME=320000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=325000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=03 Actual=03
+TIME=330000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=335000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=04 Actual=04
+TIME=340000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=345000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=05 Actual=05
+TIME=350000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=355000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=06 Actual=06
+TIME=360000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=365000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=07 Actual=07
+TIME=370000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=375000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT UP                       | Expected=08 Actual=08
+PASS : FULL                           | Expected=1 Actual=1
+PASS : EMPTY                          | Expected=0 Actual=0
+TIME=380000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=385000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=07 Actual=07
+TIME=390000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=395000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=06 Actual=06
+TIME=400000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=405000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=05 Actual=05
+TIME=410000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=415000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=04 Actual=04
+TIME=420000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=425000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=03 Actual=03
+TIME=430000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=435000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=02 Actual=02
+TIME=440000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=445000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=01 Actual=01
+TIME=450000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=455000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : COUNT DOWN                     | Expected=00 Actual=00
+PASS : EMPTY                          | Expected=1 Actual=1
+
+==============================================
+TEST 8 : FIFO RESET
+==============================================
+TIME=456000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=460000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=465000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=00 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : MPTY AFTER RESET               | Expected=1 Actual=1
+PASS : FULL AFTER RESET               | Expected=0 Actual=0
+PASS :  READ DATA RESET               | Expected=00 Actual=00
+
+==============================================
+TEST 9 : FILL FIFO
+==============================================
+TIME=466000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=10 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=470000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=10 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=475000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=10 | DATA_OUT=00 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=476000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=11 | DATA_OUT=00 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=480000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=11 | DATA_OUT=00 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=485000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=11 | DATA_OUT=00 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=486000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=12 | DATA_OUT=00 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=490000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=12 | DATA_OUT=00 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=495000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=12 | DATA_OUT=00 | WR_PTR=3 | RD_PTR=0 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=496000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=13 | DATA_OUT=00 | WR_PTR=3 | RD_PTR=0 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=500000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=13 | DATA_OUT=00 | WR_PTR=3 | RD_PTR=0 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=505000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=13 | DATA_OUT=00 | WR_PTR=4 | RD_PTR=0 | COUNT= 4 | FULL=0 | EMPTY=0
+TIME=506000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=14 | DATA_OUT=00 | WR_PTR=4 | RD_PTR=0 | COUNT= 4 | FULL=0 | EMPTY=0
+TIME=510000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=14 | DATA_OUT=00 | WR_PTR=4 | RD_PTR=0 | COUNT= 4 | FULL=0 | EMPTY=0
+TIME=515000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=14 | DATA_OUT=00 | WR_PTR=5 | RD_PTR=0 | COUNT= 5 | FULL=0 | EMPTY=0
+TIME=516000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=15 | DATA_OUT=00 | WR_PTR=5 | RD_PTR=0 | COUNT= 5 | FULL=0 | EMPTY=0
+TIME=520000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=15 | DATA_OUT=00 | WR_PTR=5 | RD_PTR=0 | COUNT= 5 | FULL=0 | EMPTY=0
+TIME=525000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=15 | DATA_OUT=00 | WR_PTR=6 | RD_PTR=0 | COUNT= 6 | FULL=0 | EMPTY=0
+TIME=526000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=16 | DATA_OUT=00 | WR_PTR=6 | RD_PTR=0 | COUNT= 6 | FULL=0 | EMPTY=0
+TIME=530000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=16 | DATA_OUT=00 | WR_PTR=6 | RD_PTR=0 | COUNT= 6 | FULL=0 | EMPTY=0
+TIME=535000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=16 | DATA_OUT=00 | WR_PTR=7 | RD_PTR=0 | COUNT= 7 | FULL=0 | EMPTY=0
+TIME=536000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=17 | DATA_OUT=00 | WR_PTR=7 | RD_PTR=0 | COUNT= 7 | FULL=0 | EMPTY=0
+TIME=540000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=17 | DATA_OUT=00 | WR_PTR=7 | RD_PTR=0 | COUNT= 7 | FULL=0 | EMPTY=0
+TIME=545000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=17 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 8 | FULL=1 | EMPTY=0
+PASS : FIFO FULL                      | Expected=1 Actual=1
+PASS : FIFO NOT EMPTY                 | Expected=0 Actual=0
+
+==============================================
+TEST 10 : OVERFLOW PROTECTION
+==============================================
+TIME=546000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=ff | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 8 | FULL=1 | EMPTY=0
+TIME=550000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=ff | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 8 | FULL=1 | EMPTY=0
+TIME=555000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=ff | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 8 | FULL=1 | EMPTY=0
+PASS : ULL REMAINS HIGH               | Expected=1 Actual=1
+PASS : /STRUCTURAL DATA               | Expected=00 Actual=00
+
+==============================================
+TEST 11 : FIFO ORDER
+==============================================
+TIME=556000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 8 | FULL=1 | EMPTY=0
+TIME=560000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 8 | FULL=1 | EMPTY=0
+TIME=565000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=10 | WR_PTR=0 | RD_PTR=1 | COUNT= 7 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=10 Actual=10
+PASS : TRUCTURAL VS RTL               | Expected=10 Actual=10
+TIME=570000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=10 | WR_PTR=0 | RD_PTR=1 | COUNT= 7 | FULL=0 | EMPTY=0
+TIME=575000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=11 | WR_PTR=0 | RD_PTR=2 | COUNT= 6 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=11 Actual=11
+PASS : TRUCTURAL VS RTL               | Expected=11 Actual=11
+TIME=580000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=11 | WR_PTR=0 | RD_PTR=2 | COUNT= 6 | FULL=0 | EMPTY=0
+TIME=585000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=12 | WR_PTR=0 | RD_PTR=3 | COUNT= 5 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=12 Actual=12
+PASS : TRUCTURAL VS RTL               | Expected=12 Actual=12
+TIME=590000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=12 | WR_PTR=0 | RD_PTR=3 | COUNT= 5 | FULL=0 | EMPTY=0
+TIME=595000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=13 | WR_PTR=0 | RD_PTR=4 | COUNT= 4 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=13 Actual=13
+PASS : TRUCTURAL VS RTL               | Expected=13 Actual=13
+TIME=600000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=13 | WR_PTR=0 | RD_PTR=4 | COUNT= 4 | FULL=0 | EMPTY=0
+TIME=605000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=14 | WR_PTR=0 | RD_PTR=5 | COUNT= 3 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=14 Actual=14
+PASS : TRUCTURAL VS RTL               | Expected=14 Actual=14
+TIME=610000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=14 | WR_PTR=0 | RD_PTR=5 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=615000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=15 | WR_PTR=0 | RD_PTR=6 | COUNT= 2 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=15 Actual=15
+PASS : TRUCTURAL VS RTL               | Expected=15 Actual=15
+TIME=620000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=15 | WR_PTR=0 | RD_PTR=6 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=625000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=16 | WR_PTR=0 | RD_PTR=7 | COUNT= 1 | FULL=0 | EMPTY=0
+PASS : FIFO ORDER                     | Expected=16 Actual=16
+PASS : TRUCTURAL VS RTL               | Expected=16 Actual=16
+TIME=630000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=16 | WR_PTR=0 | RD_PTR=7 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=635000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=17 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : FIFO ORDER                     | Expected=17 Actual=17
+PASS : TRUCTURAL VS RTL               | Expected=17 Actual=17
+PASS : FIFO EMPTY                     | Expected=1 Actual=1
+
+==============================================
+TEST 12 : UNDERFLOW PROTECTION
+==============================================
+TIME=640000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=17 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=645000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=ff | DATA_OUT=17 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : PTY REMAINS HIGH               | Expected=1 Actual=1
+
+==============================================
+TEST 13 : SIMULTANEOUS READ/WRITE
+==============================================
+TIME=646000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=aa | DATA_OUT=17 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=650000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=aa | DATA_OUT=17 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=655000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=aa | DATA_OUT=17 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=656000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=bb | DATA_OUT=17 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=660000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=bb | DATA_OUT=17 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=665000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=bb | DATA_OUT=17 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=666000 | CLK=1 | RESET=0 | WR=1 | RD=1 | DATA_IN=cc | DATA_OUT=17 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=670000 | CLK=0 | RESET=0 | WR=1 | RD=1 | DATA_IN=cc | DATA_OUT=17 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=675000 | CLK=1 | RESET=0 | WR=1 | RD=1 | DATA_IN=cc | DATA_OUT=aa | WR_PTR=3 | RD_PTR=1 | COUNT= 2 | FULL=0 | EMPTY=0
+PASS : IMULTANEOUS READ               | Expected=aa Actual=aa
+PASS : TRUCTURAL VS RTL               | Expected=aa Actual=aa
+
+==============================================
+TEST 14 : STRUCTURAL VS RTL
+==============================================
+TIME=676000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=cc | DATA_OUT=aa | WR_PTR=3 | RD_PTR=1 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=680000 | CLK=0 | RESET=1 | WR=0 | RD=0 | DATA_IN=cc | DATA_OUT=aa | WR_PTR=3 | RD_PTR=1 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=685000 | CLK=1 | RESET=1 | WR=0 | RD=0 | DATA_IN=cc | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=686000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=40 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=690000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=40 | DATA_OUT=00 | WR_PTR=0 | RD_PTR=0 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=695000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=40 | DATA_OUT=00 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=696000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=41 | DATA_OUT=00 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=700000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=41 | DATA_OUT=00 | WR_PTR=1 | RD_PTR=0 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=705000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=41 | DATA_OUT=00 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=706000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=42 | DATA_OUT=00 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=710000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=42 | DATA_OUT=00 | WR_PTR=2 | RD_PTR=0 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=715000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=42 | DATA_OUT=00 | WR_PTR=3 | RD_PTR=0 | COUNT= 3 | FULL=0 | EMPTY=0
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=716000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=43 | DATA_OUT=00 | WR_PTR=3 | RD_PTR=0 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=720000 | CLK=0 | RESET=0 | WR=1 | RD=0 | DATA_IN=43 | DATA_OUT=00 | WR_PTR=3 | RD_PTR=0 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=725000 | CLK=1 | RESET=0 | WR=1 | RD=0 | DATA_IN=43 | DATA_OUT=00 | WR_PTR=4 | RD_PTR=0 | COUNT= 4 | FULL=0 | EMPTY=0
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=726000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=00 | WR_PTR=4 | RD_PTR=0 | COUNT= 4 | FULL=0 | EMPTY=0
+TIME=730000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=00 | WR_PTR=4 | RD_PTR=0 | COUNT= 4 | FULL=0 | EMPTY=0
+TIME=735000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=40 | WR_PTR=4 | RD_PTR=1 | COUNT= 3 | FULL=0 | EMPTY=0
+PASS : URAL VS RTL DATA               | Expected=40 Actual=40
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=740000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=40 | WR_PTR=4 | RD_PTR=1 | COUNT= 3 | FULL=0 | EMPTY=0
+TIME=745000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=41 | WR_PTR=4 | RD_PTR=2 | COUNT= 2 | FULL=0 | EMPTY=0
+PASS : URAL VS RTL DATA               | Expected=41 Actual=41
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=750000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=41 | WR_PTR=4 | RD_PTR=2 | COUNT= 2 | FULL=0 | EMPTY=0
+TIME=755000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=42 | WR_PTR=4 | RD_PTR=3 | COUNT= 1 | FULL=0 | EMPTY=0
+PASS : URAL VS RTL DATA               | Expected=42 Actual=42
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=0 Actual=0
+TIME=760000 | CLK=0 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=42 | WR_PTR=4 | RD_PTR=3 | COUNT= 1 | FULL=0 | EMPTY=0
+TIME=765000 | CLK=1 | RESET=0 | WR=0 | RD=1 | DATA_IN=43 | DATA_OUT=43 | WR_PTR=4 | RD_PTR=4 | COUNT= 0 | FULL=0 | EMPTY=1
+PASS : URAL VS RTL DATA               | Expected=43 Actual=43
+PASS : FULL MATCH                     | Expected=0 Actual=0
+PASS : EMPTY MATCH                    | Expected=1 Actual=1
+
+==============================================
+DAY 20 VERIFICATION COMPLETE
+==============================================
+PASS COUNT = 148
+FAIL COUNT = 0
+----------------------------------------------
+RESULT : ALL TESTS PASSED
+----------------------------------------------
+TIME=766000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=43 | DATA_OUT=43 | WR_PTR=4 | RD_PTR=4 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=770000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=43 | DATA_OUT=43 | WR_PTR=4 | RD_PTR=4 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=775000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=43 | DATA_OUT=43 | WR_PTR=4 | RD_PTR=4 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=780000 | CLK=0 | RESET=0 | WR=0 | RD=0 | DATA_IN=43 | DATA_OUT=43 | WR_PTR=4 | RD_PTR=4 | COUNT= 0 | FULL=0 | EMPTY=1
+TIME=785000 | CLK=1 | RESET=0 | WR=0 | RD=0 | DATA_IN=43 | DATA_OUT=43 | WR_PTR=4 | RD_PTR=4 | COUNT= 0 | FULL=0 | EMPTY=1
+Simulation complete via $finish(1) at time 786 NS + 0
+./day20_tb.v:982         $finish;
+ncsim> 
